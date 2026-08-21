@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Excel is the real system of record — Teleia Soft Solutions</title>
+<meta name="description" content="Every company has spreadsheets that are secretly databases. Why replacing them fails, and how Office.js add-ins modernise the workflow without breaking it.">
+<meta name="theme-color" content="#0A3D4F">
+<link rel="icon" type="image/svg+xml" href="/logo-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A3D4F;--teal:#0E7C7B;--teal-soft:#E4F2F1;--gold:#F0A030;--ink:#12232B;--muted:#5A6B75;--line:#DCE5E8;--page:#F6F9F9;--head:'Plus Jakarta Sans',sans-serif;--body:'Inter',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:clamp(20px,5vw,40px)}
+.masthead{position:sticky;top:0;background:rgba(246,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.masthead .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo .glyph{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--deep),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:800;font-size:17px}
+.logo .glyph i{font-style:normal;color:var(--gold)}
+.logo .name{font-family:var(--head);font-weight:800;font-size:17px;color:var(--deep)}
+.masthead nav a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);margin-left:26px}
+.masthead nav a:hover{color:var(--deep)}
+article{padding-block:clamp(48px,7vw,80px)}
+.crumb{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,44px);line-height:1.12;letter-spacing:-.03em;color:var(--deep);margin:14px 0 12px}
+.byline{font-size:14px;color:var(--muted);margin-bottom:36px}
+h2{font-family:var(--head);font-weight:700;font-size:24px;letter-spacing:-.02em;color:var(--deep);margin:42px 0 12px}
+p{margin:0 0 20px}
+.pull{border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:18px 22px;color:var(--deep);font-weight:500;margin:28px 0}
+.back{display:inline-block;margin-top:36px;font-family:var(--head);font-weight:700;font-size:14.5px;text-decoration:none;color:var(--deep);border:1.5px solid var(--deep);padding:11px 20px;border-radius:999px}
+.back:hover{background:var(--deep);color:#fff}
+footer{background:var(--deep);color:#8FB4BF;padding-block:22px;font-size:13px}
+footer .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="inner">
+    <a class="logo" href="/"><span class="glyph">T<i>·</i></span><span class="name">Teleia</span></a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="wrap">
+  <span class="crumb">Insights · Office & workflow tooling</span>
+  <h1>When Excel is the real system of record</h1>
+  <p class="byline">Jigar Bagadai · Founder &amp; Principal Architect · August 2026</p>
+
+  <p>Somewhere in your company there is a workbook that would stop the business if it vanished. Pricing lives in it, or the production schedule, or the calculation a regulator once asked about. IT calls it a problem. The people who use it call it Tuesday.</p>
+
+  <p>The standard response — build a "proper system" and migrate everyone off Excel — has a failure rate that should embarrass the industry. It fails for a respectable reason: the spreadsheet is usually a better tool for the job than its replacement. It's instantly editable, endlessly flexible, and its users are experts in it. The web app that replaces it is none of those things on day one.</p>
+
+  <div class="pull">Users didn't choose Excel out of ignorance. They chose it because it works. Modernisation that ignores this is a rewrite of the users, not the system.</div>
+
+  <h2>The middle path: bring the system to the spreadsheet</h2>
+  <p>Office.js add-ins changed this conversation. An add-in runs inside Excel — the Excel people already have open — and can add what spreadsheets genuinely lack: <strong>validation</strong> at the point of entry instead of discovery at month-end; <strong>custom functions</strong> that call your real APIs, so the number in the cell comes from the system of record instead of a stale paste; <strong>controlled writes</strong>, where "save" pushes structured data to a database with an audit trail instead of emailing version 14_final_FINAL.</p>
+
+  <p>The workbook stays. The chaos leaves.</p>
+
+  <h2>What this looks like as a project</h2>
+  <p>These engagements are pleasingly small. Week one: understand the workbook honestly — which formulas encode business rules nobody wrote down elsewhere, which tabs are dead. Then an add-in that starts read-only, pulling live data in. Then, once trusted, validated writes back out. Each step ships alone and helps alone; there's no eighteen-month leap of faith, and the users keep the tool they're fast in.</p>
+
+  <p>There's also a quiet second payoff. Once the spreadsheet's data flows through an API with a schema, everything downstream gets easier — reporting, integration, and yes, letting an AI model answer questions about it safely. The unglamorous plumbing is the same plumbing either way.</p>
+
+
+  <a class="back" href="/blog/">← All insights</a>
+</article>
+
+<footer>
+  <div class="inner">
+    <span>© <span id="yr">2026</span> Teleia Soft Solutions</span>
+    <span>teleiasoftsolutions.com</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

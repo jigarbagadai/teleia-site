@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insights — Teleia Soft Solutions</title>
+<meta name="description" content="Notes on enterprise engineering, AI integration, and modernisation from Teleia Soft Solutions.">
+<meta name="theme-color" content="#0A3D4F">
+<link rel="icon" type="image/svg+xml" href="/logo-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A3D4F;--teal:#0E7C7B;--teal-soft:#E4F2F1;--gold:#F0A030;--ink:#12232B;--muted:#5A6B75;--line:#DCE5E8;--page:#F6F9F9;--head:'Plus Jakarta Sans',sans-serif;--body:'Inter',sans-serif;--shadow:0 1px 2px rgba(10,61,79,.05),0 12px 32px -12px rgba(10,61,79,.16)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.68;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding-inline:clamp(20px,5vw,40px)}
+.masthead{position:sticky;top:0;background:rgba(246,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.masthead .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo .glyph{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--deep),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:800;font-size:17px}
+.logo .glyph i{font-style:normal;color:var(--gold)}
+.logo .name{font-family:var(--head);font-weight:800;font-size:17px;color:var(--deep)}
+.masthead nav a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);margin-left:26px}
+.masthead nav a:hover{color:var(--deep)}
+.head{padding:clamp(48px,7vw,80px) 0 clamp(28px,4vw,44px)}
+.crumb{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(32px,4.6vw,48px);letter-spacing:-.03em;color:var(--deep);margin:12px 0 10px}
+.head p{color:var(--muted);margin:0;max-width:52ch}
+.posts{display:grid;gap:20px;padding-bottom:clamp(56px,8vw,90px)}
+.post{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;box-shadow:var(--shadow);text-decoration:none;display:block;transition:transform .16s ease,box-shadow .16s ease}
+.post:hover{transform:translateY(-3px);box-shadow:0 20px 44px -18px rgba(10,61,79,.3)}
+.post .k{font-family:var(--head);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.post h2{font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--deep);margin:8px 0 8px}
+.post p{margin:0 0 10px;color:var(--muted);font-size:15.5px}
+.post .m{font-size:13px;color:var(--muted)}
+footer{background:var(--deep);color:#8FB4BF;padding-block:22px;font-size:13px}
+footer .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="inner">
+    <a class="logo" href="/"><span class="glyph">T<i>·</i></span><span class="name">Teleia</span></a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap head">
+  <span class="crumb">Insights</span>
+  <h1>Notes from the workbench.</h1>
+  <p>Practical writing on enterprise engineering, AI integration, and modernisation — the things we'd tell you on a call, written down.</p>
+</div>
+
+<div class="wrap posts">
+  <a class="post" href="/blog/the-layer-between-your-systems-and-the-model.html">
+    <span class="k">AI integration</span>
+    <h2>The layer between your systems and the model</h2>
+    <p>Enterprise AI projects don't fail at the model — they fail at the seam. What the integration layer actually consists of, and how to build it without betting the year.</p>
+    <span class="m">Jigar Bagadai · August 2026</span>
+  </a>
+
+  <a class="post" href="/blog/boring-deployments-are-a-feature.html">
+    <span class="k">Cloud &amp; DevOps</span>
+    <h2>Boring deployments are a feature</h2>
+    <p>If releases are exciting, something is wrong. What a boring pipeline looks like, and why small teams should right-size Kubernetes.</p>
+    <span class="m">Jigar Bagadai · August 2026</span>
+  </a>
+
+  <a class="post" href="/blog/ef-core-didnt-ruin-your-performance.html">
+    <span class="k">Data &amp; performance</span>
+    <h2>EF Core didn't ruin your performance. The defaults did.</h2>
+    <p>Most slow .NET applications are slow at the data access layer. The usual suspects, and how to find them with evidence instead of vibes.</p>
+    <span class="m">Jigar Bagadai · August 2026</span>
+  </a>
+
+  <a class="post" href="/blog/when-excel-is-the-real-system-of-record.html">
+    <span class="k">Office &amp; workflow tooling</span>
+    <h2>When Excel is the real system of record</h2>
+    <p>Every company has spreadsheets that are secretly databases. Why replacing them fails, and how Office.js add-ins modernise the workflow without breaking it.</p>
+    <span class="m">Jigar Bagadai · August 2026</span>
+  </a>
+
+  <a class="post" href="/blog/three-questions-before-you-modernise.html">
+    <span class="k">Modernisation</span>
+    <h2>Three questions before you modernise a legacy .NET system</h2>
+    <p>Rewrites fail when the old system was never understood. What production actually does, why data moves before code, and why slices beat big bangs.</p>
+    <span class="m">Jigar Bagadai · August 2026</span>
+  </a>
+</div>
+
+<footer>
+  <div class="inner">
+    <span>© <span id="yr">2026</span> Teleia Soft Solutions</span>
+    <span>teleiasoftsolutions.com</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

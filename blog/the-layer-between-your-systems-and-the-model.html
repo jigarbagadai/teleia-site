@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The layer between your systems and the model — Teleia Soft Solutions</title>
+<meta name="description" content="Most enterprise AI projects fail at integration, not intelligence. What the integration layer actually consists of, and how to build it.">
+<meta name="theme-color" content="#0A3D4F">
+<link rel="icon" type="image/svg+xml" href="/logo-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A3D4F;--teal:#0E7C7B;--teal-soft:#E4F2F1;--gold:#F0A030;--ink:#12232B;--muted:#5A6B75;--line:#DCE5E8;--page:#F6F9F9;--head:'Plus Jakarta Sans',sans-serif;--body:'Inter',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:clamp(20px,5vw,40px)}
+.masthead{position:sticky;top:0;background:rgba(246,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.masthead .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo .glyph{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--deep),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:800;font-size:17px}
+.logo .glyph i{font-style:normal;color:var(--gold)}
+.logo .name{font-family:var(--head);font-weight:800;font-size:17px;color:var(--deep)}
+.masthead nav a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);margin-left:26px}
+.masthead nav a:hover{color:var(--deep)}
+article{padding-block:clamp(48px,7vw,80px)}
+.crumb{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,44px);line-height:1.12;letter-spacing:-.03em;color:var(--deep);margin:14px 0 12px}
+.byline{font-size:14px;color:var(--muted);margin-bottom:36px}
+h2{font-family:var(--head);font-weight:700;font-size:24px;letter-spacing:-.02em;color:var(--deep);margin:42px 0 12px}
+p{margin:0 0 20px}
+.pull{border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:18px 22px;color:var(--deep);font-weight:500;margin:28px 0}
+.back{display:inline-block;margin-top:36px;font-family:var(--head);font-weight:700;font-size:14.5px;text-decoration:none;color:var(--deep);border:1.5px solid var(--deep);padding:11px 20px;border-radius:999px}
+.back:hover{background:var(--deep);color:#fff}
+footer{background:var(--deep);color:#8FB4BF;padding-block:22px;font-size:13px}
+footer .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="inner">
+    <a class="logo" href="/"><span class="glyph">T<i>·</i></span><span class="name">Teleia</span></a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="wrap">
+  <span class="crumb">Insights · AI integration</span>
+  <h1>The layer between your systems and the model</h1>
+  <p class="byline">Jigar Bagadai · Founder &amp; Principal Architect · August 2026</p>
+
+  <p>When an enterprise AI project stalls, the post-mortem almost never says "the model wasn't smart enough." The models have been good enough for most business workflows for a while now. What the post-mortem usually says, in more polite language, is: we couldn't get the model to safely touch our actual systems.</p>
+
+  <p>That gap has a shape. On one side you have systems of record — SQL Server databases with fifteen years of schema history, internal APIs with authentication schemes designed long before anyone imagined a language model as a caller, file stores, ticketing systems, spreadsheets that are secretly databases. On the other side you have a model that is very capable and completely ignorant of all of it.</p>
+
+  <div class="pull">The hard part of AI in an enterprise isn't the prompt. It's everything the prompt has to touch.</div>
+
+  <h2>What the layer actually consists of</h2>
+  <p>The integration layer is not glue code. Done properly, it's four things, and skipping any of them is how pilots die on the way to production.</p>
+
+  <p><strong>Tools with contracts.</strong> The model shouldn't see your database; it should see a small set of well-described operations — "look up a policy by number," "list open work items for a team" — each with a typed schema for inputs and outputs. The Model Context Protocol (MCP) has become the standard way to express this, and it matters because a contract is something you can review, version, and test. Raw access is something you can only regret.</p>
+
+  <p><strong>Identity and least privilege.</strong> The question "what can the model do?" must have the same answer as "what can this specific user, in this specific context, do?" — never more. That means the layer carries the caller's identity through to the underlying system, and the model's tools are scoped down to it. An agent with a service account that can read everything is an incident report with a start date.</p>
+
+  <p><strong>An audit trail.</strong> Every tool call, its inputs, its outputs, and which conversation triggered it. Not because regulators ask (though in financial services they will), but because the first time an agent does something surprising, the only useful question is "what exactly did it do, and why?" — and you either can answer that from logs or you can't.</p>
+
+  <p><strong>Failure paths.</strong> Timeouts, rate limits, partial results, systems that are down. A model that gets a clean error it can explain to the user is a feature. A model that gets a stack trace, or worse, silence, will improvise — and improvisation is precisely the behaviour you built the layer to contain.</p>
+
+  <h2>How to start without betting the year</h2>
+  <p>The pattern that works is narrow and deep, not wide and shallow. Pick one system and one workflow that people actually do every week. Build the layer for that slice — read-only first, real data, real permissions. Get it in front of five users, not five hundred. The lessons from a real slice transfer; the lessons from a demo don't.</p>
+
+  <p>Read-only first is worth underlining. Most of the value in early deployments comes from the model reading and synthesising — answering "what's the status of X across these three systems" — and read-only tools carry a fraction of the risk of anything that writes. Earn the write access with months of boring logs.</p>
+
+  <h2>Why this favours systems engineers</h2>
+  <p>There's an assumption floating around that AI integration is a new specialism unrelated to what came before. The opposite is true. Contracts, least privilege, audit, failure handling — this is what people who have run production systems have been doing for years. The model is a new kind of caller, unusually capable and unusually unpredictable, and it makes that discipline more valuable, not obsolete.</p>
+
+  <p>Which is, plainly, the bet this firm is built on.</p>
+
+  <a class="back" href="/blog/">← All insights</a>
+</article>
+
+<footer>
+  <div class="inner">
+    <span>© <span id="yr">2026</span> Teleia Soft Solutions</span>
+    <span>teleiasoftsolutions.com</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

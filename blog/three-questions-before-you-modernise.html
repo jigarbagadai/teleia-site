@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three questions before you modernise a legacy .NET system — Teleia Soft Solutions</title>
+<meta name="description" content="Before committing budget to a .NET modernisation, answer three questions about production behaviour, data, and sequencing.">
+<meta name="theme-color" content="#0A3D4F">
+<link rel="icon" type="image/svg+xml" href="/logo-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A3D4F;--teal:#0E7C7B;--teal-soft:#E4F2F1;--gold:#F0A030;--ink:#12232B;--muted:#5A6B75;--line:#DCE5E8;--page:#F6F9F9;--head:'Plus Jakarta Sans',sans-serif;--body:'Inter',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:clamp(20px,5vw,40px)}
+.masthead{position:sticky;top:0;background:rgba(246,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.masthead .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo .glyph{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--deep),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:800;font-size:17px}
+.logo .glyph i{font-style:normal;color:var(--gold)}
+.logo .name{font-family:var(--head);font-weight:800;font-size:17px;color:var(--deep)}
+.masthead nav a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);margin-left:26px}
+.masthead nav a:hover{color:var(--deep)}
+article{padding-block:clamp(48px,7vw,80px)}
+.crumb{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,44px);line-height:1.12;letter-spacing:-.03em;color:var(--deep);margin:14px 0 12px}
+.byline{font-size:14px;color:var(--muted);margin-bottom:36px}
+h2{font-family:var(--head);font-weight:700;font-size:24px;letter-spacing:-.02em;color:var(--deep);margin:42px 0 12px}
+p{margin:0 0 20px}
+.pull{border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:18px 22px;color:var(--deep);font-weight:500;margin:28px 0}
+.back{display:inline-block;margin-top:36px;font-family:var(--head);font-weight:700;font-size:14.5px;text-decoration:none;color:var(--deep);border:1.5px solid var(--deep);padding:11px 20px;border-radius:999px}
+.back:hover{background:var(--deep);color:#fff}
+footer{background:var(--deep);color:#8FB4BF;padding-block:22px;font-size:13px}
+footer .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="inner">
+    <a class="logo" href="/"><span class="glyph">T<i>·</i></span><span class="name">Teleia</span></a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="wrap">
+  <span class="crumb">Insights · Modernisation</span>
+  <h1>Three questions before you modernise a legacy .NET system</h1>
+  <p class="byline">Jigar Bagadai · Founder &amp; Principal Architect · August 2026</p>
+
+  <p>Modernisation projects rarely fail because the new framework was the wrong choice. They fail because the old system was never really understood before the rewrite began. Fifteen-year-old codebases don't document themselves — they encode fifteen years of decisions, workarounds, and business rules that live nowhere else.</p>
+
+  <p>Before committing budget, three questions are worth answering honestly.</p>
+
+  <h2>1. Do you know what production actually does?</h2>
+  <p>Not what the code could do — what it does. Which endpoints get traffic, which scheduled jobs still matter, which features have quietly had zero users since 2019. A few weeks of real telemetry is worth more than any architecture workshop, because it turns "migrate everything" into "migrate the 40% that's alive, retire the rest." The cheapest code to modernise is the code you delete.</p>
+
+  <h2>2. Is the data ready to move before the code?</h2>
+  <p>The application is replaceable; the data is not. Schema quirks, implicit conventions, columns whose meaning changed in 2017 without a rename — these will surface either during a controlled data-first analysis or during the go-live weekend. One of those is much cheaper.</p>
+
+  <div class="pull">A rewrite is a data migration wearing an application costume. Plan it in that order.</div>
+
+  <h2>3. Can you ship it in slices?</h2>
+  <p>The big-bang cutover — freeze the old system, build the new one for eighteen months, switch — has a failure mode everyone knows and teams keep choosing anyway. The alternative is the strangler pattern: route one workflow at a time to the new system, run both against the same data, keep every step reversible. It feels slower. It's the only version that lets you stop halfway with something valuable instead of nothing.</p>
+
+  <p>Slicing also changes the risk conversation with the business. "We move claims lookup next month, and we can route it back in an hour if something's wrong" is a sentence a stakeholder can approve. "Trust us for a year and a half" is not.</p>
+
+  <h2>Where this lands</h2>
+  <p>If those three questions have good answers — you know what runs, the data is mapped, and the plan is sliced — modernisation is an engineering project like any other. If they don't, the framework choice is the least of your problems, and the right first engagement is a short assessment, not a rewrite.</p>
+
+  <a class="back" href="/blog/">← All insights</a>
+</article>
+
+<footer>
+  <div class="inner">
+    <span>© <span id="yr">2026</span> Teleia Soft Solutions</span>
+    <span>teleiasoftsolutions.com</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

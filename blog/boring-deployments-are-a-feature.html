@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boring deployments are a feature — Teleia Soft Solutions</title>
+<meta name="description" content="If releases are exciting, something is wrong. What a boring deployment pipeline looks like, and why small teams should right-size Kubernetes.">
+<meta name="theme-color" content="#0A3D4F">
+<link rel="icon" type="image/svg+xml" href="/logo-mark.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0A3D4F;--teal:#0E7C7B;--teal-soft:#E4F2F1;--gold:#F0A030;--ink:#12232B;--muted:#5A6B75;--line:#DCE5E8;--page:#F6F9F9;--head:'Plus Jakarta Sans',sans-serif;--body:'Inter',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:clamp(20px,5vw,40px)}
+.masthead{position:sticky;top:0;background:rgba(246,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+.masthead .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo .glyph{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--deep),var(--teal));display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:800;font-size:17px}
+.logo .glyph i{font-style:normal;color:var(--gold)}
+.logo .name{font-family:var(--head);font-weight:800;font-size:17px;color:var(--deep)}
+.masthead nav a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);margin-left:26px}
+.masthead nav a:hover{color:var(--deep)}
+article{padding-block:clamp(48px,7vw,80px)}
+.crumb{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,44px);line-height:1.12;letter-spacing:-.03em;color:var(--deep);margin:14px 0 12px}
+.byline{font-size:14px;color:var(--muted);margin-bottom:36px}
+h2{font-family:var(--head);font-weight:700;font-size:24px;letter-spacing:-.02em;color:var(--deep);margin:42px 0 12px}
+p{margin:0 0 20px}
+.pull{border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:18px 22px;color:var(--deep);font-weight:500;margin:28px 0}
+.back{display:inline-block;margin-top:36px;font-family:var(--head);font-weight:700;font-size:14.5px;text-decoration:none;color:var(--deep);border:1.5px solid var(--deep);padding:11px 20px;border-radius:999px}
+.back:hover{background:var(--deep);color:#fff}
+footer{background:var(--deep);color:#8FB4BF;padding-block:22px;font-size:13px}
+footer .inner{max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,60px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="inner">
+    <a class="logo" href="/"><span class="glyph">T<i>·</i></span><span class="name">Teleia</span></a>
+    <nav>
+      <a href="/#services">Services</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="wrap">
+  <span class="crumb">Insights · Cloud & DevOps</span>
+  <h1>Boring deployments are a feature</h1>
+  <p class="byline">Jigar Bagadai · Founder &amp; Principal Architect · August 2026</p>
+
+  <p>You can learn a lot about an engineering organisation by asking one question: what happens on release day? If the answer involves a checklist, a specific person who "knows the steps," a window when nobody else should touch anything, and a slightly elevated heart rate — the deployment process is carrying risk that belongs in software.</p>
+
+  <div class="pull">Excitement during a deployment is unhandled risk expressing itself as adrenaline.</div>
+
+  <h2>What boring looks like</h2>
+  <p>A boring deployment has four properties. It's <strong>identical every time</strong> — one pipeline, no manual steps, no "just this once" SSH sessions. It's <strong>reversible</strong> — rollback is a tested command, not a theory. It's <strong>observable</strong> — within minutes you know from dashboards, not from users, whether the release is healthy. And it's <strong>frequent</strong> — small releases shipped often carry less risk each than a quarter of changes shipped at once, because the diff you're debugging is one day's work, not ninety.</p>
+
+  <p>None of this requires exotic tooling. GitHub Actions, a container registry, and discipline get most teams there. The hard part isn't technology; it's refusing to accumulate manual exceptions.</p>
+
+  <h2>The Kubernetes question</h2>
+  <p>Kubernetes deserves a paragraph because it's where small teams most often buy complexity they can't operate. It solves real problems — scheduling, self-healing, rolling updates — and we run it happily where the workload justifies it. But a three-service application with steady traffic doesn't need a cluster; it needs a container service the cloud provider operates for you. The honest sizing question is not "will we need this at scale?" but "who fixes this at 2 a.m. today?" If the answer is "the one developer who set it up," the platform is bigger than the team.</p>
+
+  <h2>Pipelines are the team's memory</h2>
+  <p>The under-appreciated benefit of putting everything in the pipeline is that the pipeline becomes documentation that cannot go stale. How is the database migrated? Read the workflow. What environment variables exist in staging? They're declared, versioned, and reviewed. When the person who set up the system leaves — and eventually everyone leaves — the pipeline stays.</p>
+
+  <p>That's the standard we build to: a deployment any team member can run on a Friday afternoon without telling anyone. Not because Friday deploys are brave, but because when they're genuinely safe, the word "brave" stops applying.</p>
+
+
+  <a class="back" href="/blog/">← All insights</a>
+</article>
+
+<footer>
+  <div class="inner">
+    <span>© <span id="yr">2026</span> Teleia Soft Solutions</span>
+    <span>teleiasoftsolutions.com</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
